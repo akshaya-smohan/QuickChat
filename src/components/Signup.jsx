@@ -1,6 +1,19 @@
+import { Link } from "react-router-dom"
 import "./Signup.css"
+import { useState } from "react"
 
 const Signup = () => {
+
+    const [upData, setUpdata] = useState({
+        username: '',
+        email: '',
+        password: ''
+    })
+
+    const successSignup =(e) => {
+        console.log(upData)
+    }
+
     return (
         <>
             <div className="div1">
@@ -8,14 +21,14 @@ const Signup = () => {
                 <p>Create your account</p>
                 <form action="">
                     <label htmlFor="user">Username</label><br />
-                    <input type="text" id="user" placeholder="Enter your username" /><br />
+                    <input type="text" placeholder="Enter your username" onChange={(e) => {setUpdata({...upData, username: e.target.value})}}/><br />
                     <label htmlFor="email">Email</label><br />
-                    <input type="email" id="email" placeholder="Enter your email" /><br />
+                    <input type="email" id="email" placeholder="Enter your email" onChange={(e) => {setUpdata({...upData, email: e.target.value})}}/><br />
                     <label htmlFor="pass">Password</label><br />
-                    <input type="password" id="pass" placeholder="Enter your password" /><br />
+                    <input type="password" id="pass" placeholder="Enter your password" onChange={(e) => {setUpdata({...upData, password: e.target.value})}}/><br />
                 </form>
-                <button>Create Account</button>
-                <p>Already have an account? <a href="/">Sign in</a></p>
+                <button className="signup" onClick={successSignup}>Create Account</button>
+                <p>Already have an account? <Link to="/login">Login</Link></p>
             </div>
         </>
     )
