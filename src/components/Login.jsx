@@ -21,11 +21,13 @@ const Login = () => {
                 <p>Welcome back</p>
                 <form action="">
                     <label htmlFor="email">Email</label><br />
-                    <input type="email" placeholder="Enter your email"  onChange={(e) => {setFormdata({...formdata, email:e.target.value})}}/><br />
+                    <input type="email" className="loginput" placeholder="Enter your email"  onChange={(e) => {setFormdata({...formdata, email:e.target.value})}}/><br />
                     <label htmlFor="pass">Password</label><br />
-                    <input type="password" id="pass" placeholder="Enter your password"  onChange={(e) => {setFormdata({...formdata, password:e.target.value})}}/><br />
+                    <input type="password" className="loginput" id="pass" placeholder="Enter your password"  onChange={(e) => {setFormdata({...formdata, password:e.target.value})}}/><br />
                 </form>
-                <button className="login" onClick={loginsuccess}>Sign In</button>
+                <Link to="/main">
+                    <button className="login" onClick={loginsuccess}>Sign In</button>
+                </Link>
                 <p>Don't have an account? <Link to="/signup">Signup</Link></p>
             </div>
         </>

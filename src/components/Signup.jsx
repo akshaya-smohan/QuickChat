@@ -21,13 +21,15 @@ const Signup = () => {
                 <p>Create your account</p>
                 <form action="">
                     <label htmlFor="user">Username</label><br />
-                    <input type="text" placeholder="Enter your username" onChange={(e) => {setUpdata({...upData, username: e.target.value})}}/><br />
+                    <input type="text" className="loginput" placeholder="Enter your username" onChange={(e) => {setUpdata({...upData, username: e.target.value})}}/><br />
                     <label htmlFor="email">Email</label><br />
-                    <input type="email" id="email" placeholder="Enter your email" onChange={(e) => {setUpdata({...upData, email: e.target.value})}}/><br />
+                    <input type="email" className="loginput" id="email" placeholder="Enter your email" onChange={(e) => {setUpdata({...upData, email: e.target.value})}}/><br />
                     <label htmlFor="pass">Password</label><br />
-                    <input type="password" id="pass" placeholder="Enter your password" onChange={(e) => {setUpdata({...upData, password: e.target.value})}}/><br />
+                    <input type="password" className="loginput" id="pass" placeholder="Enter your password" onChange={(e) => {setUpdata({...upData, password: e.target.value})}}/><br />
                 </form>
-                <button className="signup" onClick={successSignup}>Create Account</button>
+                <Link to="/main">
+                    <button className="signup" onClick={successSignup}>Create Account</button>
+                </Link>
                 <p>Already have an account? <Link to="/login">Login</Link></p>
             </div>
         </>
