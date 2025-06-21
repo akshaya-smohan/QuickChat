@@ -1,3 +1,4 @@
+import Contacts from "./Contacts"
 
 
 
@@ -7,7 +8,9 @@ const Main = () => {
             <div className="main">
                 <div className="sidebar">
                     <input type="text" className="search"  placeholder="Search Conversations..."/><hr />
-                    <div className="chatlist"></div>
+                    <div className="chatlist">
+                        <Contacts />
+                    </div>
                     <hr />
                     <button className="newchat">+ New Chat</button>
                 </div>
