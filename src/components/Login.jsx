@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import "./Login.css"
 import { useState } from "react"
 import axios from "axios"
@@ -10,29 +10,26 @@ const Login = (props) => {
         email:'',
         password:''
     })
+    let navigate = useNavigate()
 
-    // const loginsuccess = (e) => {
-    //     console.log(formdata)
-    // }
     
     const handleSubmit = async (e)=> {
 
         e.preventDefault()
-        console.log(setFormdata);
 
-       await axios.post('http://localhost:5000/api/v1/login', { data:formdata}).then((res)=> {
-        console.log(res.data.status, 'response')
-        
-        if (res.data.status) {
-            alert('this is auth user')
-        } else {
-            alert('this is not auth user')
-        }
+       await axios.post('http://localhost:5000/login', { ...formdata}).then((res)=> {
+        console.log(res.data, 'response')
+        window.localStorage.setItem('access_token', res.data.accessToken)   
+        navigate('/main')           
        }).catch((err)=> {
-            console.log(err)
-            alert('this is not auth user')
+            console.log(err.message)
+            alert('Incorrect Email or Password')
        })
+       
+
     }
+
+    
 
     return (
         <>

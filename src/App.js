@@ -1,11 +1,24 @@
-import {  Route, Routes } from 'react-router-dom';
+import {  Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
 import Signup from './components/Signup';
 import Home from './components/Home';
 import Login from './components/login';
 import Main from './components/Main';
+import { useEffect } from 'react';
 
 function App() {
+
+  const navigator= useNavigate()
+
+  useEffect(()=> {
+    const accessToken = localStorage.getItem('access_token')
+    if (!accessToken) {
+      navigator('/login')
+    } else {
+      navigator('/main')
+    }
+  }, [])
+
   return (
       
         <Routes>
